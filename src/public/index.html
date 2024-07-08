@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+</head>
+<body class="bg-gray-100 text-gray-900">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold mb-4">API Documentation</h1>
+        <p class="mb-6">Welcome to the API documentation. This API provides endpoints for managing users, columns, and cards in a Kanban board application.</p>
+        
+        <h2 class="text-2xl font-bold mb-4">Table of Contents</h2>
+        <ul class="list-disc ml-6">
+            <li><a href="#authentication" class="text-blue-500">Authentication</a></li>
+            <li><a href="#users" class="text-blue-500">Users</a></li>
+            <li><a href="#columns" class="text-blue-500">Columns</a></li>
+            <li><a href="#cards" class="text-blue-500">Cards</a></li>
+            <li><a href="#errors" class="text-blue-500">Errors</a></li>
+        </ul>
+
+        <!-- Authentication Section -->
+        <div class="container mx-auto px-4 py-8">
+            <h2 id="authentication" class="text-2xl font-bold mb-4">Authentication</h2>
+            <p class="mb-6">This API uses JWT (JSON Web Tokens) for authentication. Include the token in the Authorization header of your requests as follows:</p>
+            <pre class="bg-gray-200 p-4 rounded">
+Authorization: Bearer YOUR_TOKEN
+            </pre>
+            
+            <h3 class="text-xl font-bold mb-2">Login</h3>
+            <p class="mb-4">Endpoint to log in and receive a JWT.</p>
+            <pre class="bg-gray-200 p-4 rounded">
+POST /login
+{
+  "email": "user@example.com",
+  "password": "yourpassword"
+}
+            </pre>
+            <p class="mb-4">Response:</p>
+            <pre class="bg-gray-200 p-4 rounded">
+{
+  "message": "Login successful",
+  "token": "YOUR_JWT_TOKEN"
+}
+            </pre>
+            
+            <h3 class="text-xl font-bold mb-2">Register</h3>
+            <p class="mb-4">Endpoint to register a new user.</p>
+            <pre class="bg-gray-200 p-4 rounded">
+POST /register
+{
+  "username": "newuser",
+  "email": "newuser@example.com",
+  "password": "newpassword"
+}
+            </pre>
+            <p class="mb-4">Response:</p>
+            <pre class="bg-gray-200 p-4 rounded">
+{
+  "id": 1,
+  "username": "newuser",
+  "email": "newuser@example.com"
+}
+            </pre>
+        </div>
+
+        <!-- Users Section -->
+        <div class="container mx-auto px-4 py-8">
+            <h2 id="users" class="text-2xl font-bold mb-4">Users</h2>
+            <p class="mb-4">Endpoints for managing users.</p>
+            <h3 class="text-xl font-bold mb-2">Delete User</h3>
+            <pre class="bg-gray-200 p-4 rounded">
+DELETE /users
+Authorization: Bearer YOUR_TOKEN
+{
+  "email": "user@example.com",
+  "password": "yourpassword"
+}
+            </pre>
+            <p class="mb-4">Response:</p>
+            <pre class="bg-gray-200 p-4 rounded">
+{
+  "message": "User deleted successfully"
+}
+            </pre>
+            
+            <h3 class="text-xl font-bold mb-2">Update User Email</h3>
+            <pre class="bg-gray-200 p-4 rounded">
+PUT /users/email
+Authorization: Bearer YOUR_TOKEN
+{
+  "email": "user@example.com",
+  "newEmail": "newemail@example.com"
+}
+            </pre>
+            <p class="mb-4">Response:</p>
+            <pre class="bg-gray-200 p-4 rounded">
+{
+  "message": "User updated successfully"
+}
+            </pre>
+            
+            <h3 class="text-xl font-bold mb-2">Update User Password</h3>
+            <pre class="bg-gray-200 p-4 rounded">
+PUT /users/password
+Authorization: Bearer YOUR_TOKEN
+{
+  "email": "user@example.com",
+  "password": "oldpassword",
+  "newPassword": "newpassword"
+}
+            </pre>
+            <p class="mb-4">Response:</p>
+            <pre class="bg-gray-200 p-4 rounded">
+{
+  "message": "User updated successfully"
+}
+            </pre>
+        </div>
+
+        <!-- Columns Section -->
+        <div class="container mx-auto px-4 py-8">
+            <h2 id="columns" class="text-2xl font-bold mb-4">Columns</h2>
+            <p class="mb-4">Endpoints for managing columns.</p>
+            
+            <h3 class="text-xl font-bold mb-2">Get All Columns</h3>
+            <pre class="bg-gray-200 p-4 rounded">
+GET /columns
+Authorization: Bearer YOUR_TOKEN
+            </pre>
+            <p class="mb-4">Response:</p>
+            <pre class="bg-gray-200 p-4 rounded">
+[
+  {
+    "id": 1,
+    "title": "To Do",
+    "board_id": 1
+  },
+  ...
+]
+            </pre>
+            
+            <h3 class="text-xl font-bold mb-2">Create Column</h3>
+            <pre class="bg-gray-200 p-4 rounded">
+POST /columns
+Authorization: Bearer YOUR_TOKEN
+{
+  "title": "New Column",
+  "board_id": 1
+}
+            </pre>
+            <p class="mb-4">Response:</p>
+            <pre class="bg-gray-200 p-4 rounded">
+{
+  "id": 2,
+  "title": "New Column",
+  "board_id": 1
+}
+            </pre>
+            
+            <h3 class="text-xl font-bold mb-2">Update Column</h3>
+            <pre class="bg-gray-200 p-4 rounded">
+PUT /columns/{id}
+Authorization: Bearer YOUR_TOKEN
+{
+  "title": "Updated Column"
+}
+            </pre>
+            <p class="mb-4">Response:</p>
+            <pre class="bg-gray-200 p-4 rounded">
+{
+  "id": 2,
+  "title": "Updated Column",
+  "board_id": 1
+}
+            </pre>
+            
+            <h3 class="text-xl font-bold mb-2">Delete Column</h3>
+            <pre class="bg-gray-200 p-4 rounded">
+DELETE /columns/{id}
+Authorization: Bearer YOUR_TOKEN
+            </pre>
+            <p class="mb-4">Response:</p>
+            <pre class="bg-gray-200 p-4 rounded">
+{
+  "message": "Column deleted successfully"
+}
+            </pre>
+        </div>
+
+        <!-- Cards Section -->
+        <div class="container mx-auto px-4 py-8">
+            <h2 id="cards" class="text-2xl font-bold mb-4">Cards</h2>
+            <p class="mb-4">Endpoints for managing cards.</p>
+            
+            <h3 class="text-xl font-bold mb-2">Get Cards By Column ID</h3>
+            <pre class="bg-gray-200 p-4 rounded">
+GET /cards/{column_id}
+Authorization: Bearer YOUR_TOKEN
+            </pre>
+            <p class="mb-4">Response:</p>
+            <pre class="bg-gray-200 p-4 rounded">
+[
+  {
+    "id": 1,
+    "title": "Card 1",
+    "description": "Card 1 description",
+    "column_id": 1
+  },
+  ...
+]
+            </pre>
+            
+            <h3 class="text-xl font-bold mb-2">Create Card</h3>
+            <pre class="bg-gray-200 p-4 rounded">
+POST /cards
+Authorization: Bearer YOUR_TOKEN
+{
+  "title": "New Card",
+  "description": "Card description",
+  "column_id": 1
+}
+            </pre>
+            <p class="mb-4">Response:</p>
+            <pre class="bg-gray-200 p-4 rounded">
+{
+  "id": 2,
+  "title": "New Card",
+  "description": "Card description",
+  "column_id": 1
+}
+            </pre>
+            
+            <h3 class="text-xl font-bold mb-2">Update Card</h3>
+            <pre class="bg-gray-200 p-4 rounded">
+PUT /cards/{id}
+Authorization: Bearer YOUR_TOKEN
+{
+  "title": "Updated Card",
+  "description": "Updated description"
+}
+            </pre>
+            <p class="mb-4">Response:</p>
+            <pre class="bg-gray-200 p-4 rounded">
+{
+  "id": 2,
+  "title": "Updated Card",
+  "description": "Updated description",
+  "column_id": 1
+}
+            </pre>
+            
+            <h3 class="text-xl font-bold mb-2">Delete Card</h3>
+            <pre class="bg-gray-200 p-4 rounded">
+DELETE /cards/{id}
+Authorization: Bearer YOUR_TOKEN
+            </pre>
+            <p class="mb-4">Response:</p>
+            <pre class="bg-gray-200 p-4 rounded">
+{
+  "message": "Card deleted successfully"
+}
+            </pre>
+        </div>
+
+        <!-- Errors Section -->
+        <div class="container mx-auto px-4 py-8">
+            <h2 id="errors" class="text-2xl font-bold mb-4">Errors</h2>
+            <p class="mb-4">This section describes the various error responses you might encounter when using the API.</p>
+            
+            <h3 class="text-xl font-bold mb-2">Common Errors</h3>
+            <pre class="bg-gray-200 p-4 rounded">
+400 Bad Request
+{
+  "error": "Invalid user data"
+}
+            </pre>
+            <pre class="bg-gray-200 p-4 rounded">
+401 Unauthorized
+{
+  "error": "Access denied. No token provided."
+}
+            </pre>
+            <pre class="bg-gray-200 p-4 rounded">
+403 Forbidden
+{
+  "error": "Insufficient permissions"
+}
+            </pre>
+            <pre class="bg-gray-200 p-4 rounded">
+404 Not Found
+{
+  "error": "Resource not found"
+}
+            </pre>
+            <pre class="bg-gray-200 p-4 rounded">
+500 Internal Server Error
+{
+  "error": "Internal server error"
+}
+            </pre>
+        </div>
+    </div>
+</body>
+</html>

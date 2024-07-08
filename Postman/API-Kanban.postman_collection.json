@@ -1,0 +1,449 @@
+{
+	"info": {
+		"_postman_id": "6dbc1ab8-05f9-41e7-b25b-76ede813fb80",
+		"name": "API-Kanban",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36756699"
+	},
+	"item": [
+		{
+			"name": "Registrar un usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"sigoaqui\",\r\n    \"email\": \"sigoaqui@utp.edu.co\",\r\n    \"password\": \"12345678\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/user/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login de usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"error@pes.com\",\r\n  \"password\": \"12345678\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear columnas con id de usuario",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiZW1haWwiOiJlcnJvckBwZXMuY29tIiwiaWF0IjoxNzIwMzk5MDY5LCJleHAiOjE3MjA0MDI2Njl9.dnA5JJpiB9JVWbMpOdRSw3OLzJ0zZEtCmaA2lJY7iFo",
+						"description": "Aqui va el token que se genera al iniciar sesion",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Pendiente\",\r\n  \"user_id\": 1\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/columns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"columns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener lista de columnas con id de usuario",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiZW1haWwiOiJlcnJvckBwZXMuY29tIiwiaWF0IjoxNzIwMzk5MDY5LCJleHAiOjE3MjA0MDI2Njl9.dnA5JJpiB9JVWbMpOdRSw3OLzJ0zZEtCmaA2lJY7iFo",
+						"description": "Token de usuario necesario",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/columns/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"columns",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar el titulo de una columna",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiZW1haWwiOiJlcnJvckBwZXMuY29tIiwiaWF0IjoxNzIwMzk5MDY5LCJleHAiOjE3MjA0MDI2Njl9.dnA5JJpiB9JVWbMpOdRSw3OLzJ0zZEtCmaA2lJY7iFo",
+						"description": "Token de usuario",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"hecho\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/columns/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"columns",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar columnas con id de usuario",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiZW1haWwiOiJlcnJvckBwZXMuY29tIiwiaWF0IjoxNzIwNDA0NjAzLCJleHAiOjE3MjA0Mjk4MDN9.dYWGSvUNJ7h28cnvk20qgJsKDyZs008ZegyE_6NQj7Q",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/columns/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"columns",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear una carta con los datos necesarios, el id de la columna es necesario",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiZW1haWwiOiJlcnJvckBwZXMuY29tIiwiaWF0IjoxNzIwNDA0NjAzLCJleHAiOjE3MjA0Mjk4MDN9.dYWGSvUNJ7h28cnvk20qgJsKDyZs008ZegyE_6NQj7Q",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Tercera Tarea\",\r\n  \"column_id\": 12,\r\n  \"description\": \"Descripción de la nueva tarea\",\r\n  \"user_id\": 1\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/cards",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"cards"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener las cartas de la columna con el id de la columna",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiZW1haWwiOiJlcnJvckBwZXMuY29tIiwiaWF0IjoxNzIwNDA0NjAzLCJleHAiOjE3MjA0Mjk4MDN9.dYWGSvUNJ7h28cnvk20qgJsKDyZs008ZegyE_6NQj7Q",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/cards/11",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"cards",
+						"11"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualización de una carta con id de la carta",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiZW1haWwiOiJlcnJvckBwZXMuY29tIiwiaWF0IjoxNzIwNDA0NjAzLCJleHAiOjE3MjA0Mjk4MDN9.dYWGSvUNJ7h28cnvk20qgJsKDyZs008ZegyE_6NQj7Q",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"cambio de Nueva tarea\",\r\n    \"description\": \"Change words\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/cards/12",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"cards",
+						"12"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar una carta con su id",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiZW1haWwiOiJlcnJvckBwZXMuY29tIiwiaWF0IjoxNzIwNDA0NjAzLCJleHAiOjE3MjA0Mjk4MDN9.dYWGSvUNJ7h28cnvk20qgJsKDyZs008ZegyE_6NQj7Q",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/cards/12",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"cards",
+						"12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar un usuario con email y contraseña",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiZW1haWwiOiJlcnJvckBwZXMuY29tIiwiaWF0IjoxNzIwNDA0NjAzLCJleHAiOjE3MjA0Mjk4MDN9.dYWGSvUNJ7h28cnvk20qgJsKDyZs008ZegyE_6NQj7Q",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"sigoaqui@utp.edu.co\",\r\n    \"password\": \"12345678\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/user/delete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cambiar el email del usuario",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiZW1haWwiOiJlcnJvckBwZXMuY29tIiwiaWF0IjoxNzIwNDA0NjAzLCJleHAiOjE3MjA0Mjk4MDN9.dYWGSvUNJ7h28cnvk20qgJsKDyZs008ZegyE_6NQj7Q",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"ramrio@alguien.com\",\r\n    \"newEmail\": \"ramiro@alguien.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/user/update/email",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user",
+						"update",
+						"email"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar el password del usuario, requiere el ingreso de la contraseña anterior",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiZW1haWwiOiJlcnJvckBwZXMuY29tIiwiaWF0IjoxNzIwNDA0NjAzLCJleHAiOjE3MjA0Mjk4MDN9.dYWGSvUNJ7h28cnvk20qgJsKDyZs008ZegyE_6NQj7Q",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"error@pes.com\",\r\n    \"password\": \"12345678\",\r\n    \"newPassword\": \"12345678\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/user/update/password",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user",
+						"update",
+						"password"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
