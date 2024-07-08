@@ -62,7 +62,7 @@ export const loginUser = async (req, res) => {
       sameSite: 'strict',
     });
 
-    res.status(200).json({ message: 'Login successful' });
+    res.status(200).json({ message: 'Login successful', token: token});
   } catch (error) {
     res.status(500).json({ error: 'Internal server error' });
   }
